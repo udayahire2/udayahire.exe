@@ -115,11 +115,11 @@ export function ActivityStats() {
 
                 {/* Contribution Graph */}
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 15 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5 }}
-                    className="p-6 rounded-md border border-border bg-card overflow-hidden"
+                    className="p-6 md:p-8 rounded-lg border border-border/60 bg-muted/5 overflow-hidden shadow-sm"
                 >
                     <ContributionGraph
                         data={contributionData}
@@ -176,13 +176,14 @@ export function ActivityStats() {
                 </motion.div>
 
                 {/* Recent Activity + Stats */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div className="space-y-5">
-                        <h3 className="text-base font-semibold flex items-center gap-2">
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 mt-4">
+                    {/* Activity Feed */}
+                    <div className="md:col-span-7 lg:col-span-8 flex flex-col">
+                        <div className="flex items-center gap-3 mb-8 border-b border-border/40 pb-4">
                             <Activity className="w-4 h-4 text-muted-foreground" />
-                            Recent Activity
-                        </h3>
-                        <div className="relative border-l border-border/50 ml-2 space-y-7 pl-7 py-1">
+                            <h3 className="text-sm font-mono text-foreground tracking-widest uppercase">Recent Activity</h3>
+                        </div>
+                        <div className="relative border-l border-border/40 ml-2 space-y-8 pl-8 py-2">
                             {recentActivity.map((item, index) => (
                                 <motion.div
                                     key={item.id}
@@ -211,35 +212,32 @@ export function ActivityStats() {
                         </div>
                     </div>
 
-                    {/* Stats Cards */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 h-fit">
-                        <Card className="bg-card border-border/60">
-                            <CardHeader className="pb-2">
-                                <CardTitle className="text-sm font-medium text-muted-foreground">Pull Requests</CardTitle>
-                            </CardHeader>
-                            <CardContent>
-                                <div className="text-2xl font-bold font-mono text-foreground">142</div>
-                                <div className="text-xs text-muted-foreground mt-1">+12% from last month</div>
-                            </CardContent>
-                        </Card>
-                        <Card className="bg-card border-border/60">
-                            <CardHeader className="pb-2">
-                                <CardTitle className="text-sm font-medium text-muted-foreground">Code Reviews</CardTitle>
-                            </CardHeader>
-                            <CardContent>
-                                <div className="text-2xl font-bold font-mono text-foreground">85</div>
-                                <div className="text-xs text-muted-foreground mt-1">+5% from last month</div>
-                            </CardContent>
-                        </Card>
-                        <Card className="col-span-1 sm:col-span-2 bg-card border-border/60">
-                            <CardContent className="pt-5 flex items-center justify-between">
-                                <div>
-                                    <div className="text-lg font-bold text-foreground">Top 1%</div>
-                                    <div className="text-sm text-muted-foreground">Global contributor rank</div>
-                                </div>
-                                <Star className="w-6 h-6 text-muted-foreground" />
-                            </CardContent>
-                        </Card>
+                    {/* Stats Cards - Minimal Outlined */}
+                    <div className="md:col-span-5 lg:col-span-4 flex flex-col gap-4">
+                        <div className="flex items-center gap-3 mb-4 md:mb-8 border-b border-border/40 pb-4">
+                            <Star className="w-4 h-4 text-muted-foreground" />
+                            <h3 className="text-sm font-mono text-foreground tracking-widest uppercase">Overview</h3>
+                        </div>
+
+                        <div className="p-6 rounded-lg border border-border/60 bg-muted/5 flex flex-col gap-1 shadow-sm transition-colors hover:bg-muted/10">
+                            <span className="text-xs font-mono text-muted-foreground uppercase tracking-widest">Pull Requests</span>
+                            <div className="text-3xl font-bold tracking-tight text-foreground mt-2">142</div>
+                            <span className="text-xs text-muted-foreground mt-1">+12% from last month</span>
+                        </div>
+
+                        <div className="p-6 rounded-lg border border-border/60 bg-muted/5 flex flex-col gap-1 shadow-sm transition-colors hover:bg-muted/10">
+                            <span className="text-xs font-mono text-muted-foreground uppercase tracking-widest">Code Reviews</span>
+                            <div className="text-3xl font-bold tracking-tight text-foreground mt-2">85</div>
+                            <span className="text-xs text-muted-foreground mt-1">+5% from last month</span>
+                        </div>
+
+                        <div className="p-6 rounded-lg border border-border/60 bg-primary/5 flex items-center justify-between shadow-sm mt-auto">
+                            <div className="flex flex-col">
+                                <span className="text-lg font-bold text-foreground tracking-tight">Top 1%</span>
+                                <span className="text-xs text-muted-foreground font-mono mt-1">Global Contributor</span>
+                            </div>
+                            <Star className="w-5 h-5 text-primary/80" />
+                        </div>
                     </div>
                 </div>
             </div>

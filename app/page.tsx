@@ -4,7 +4,6 @@ import { AboutSection } from '@/components/sections/about-section'
 import { ActivityStats } from '@/components/sections/activity-stats'
 import { ProjectsShowcase } from '@/components/sections/projects-showcase'
 import { BlogSection } from '@/components/sections/blog-section'
-import { ExperienceTimeline } from '@/components/sections/experience-timeline'
 import { CertificationsAwards } from '@/components/sections/certifications-awards'
 import { SectionDivider } from '@/components/layout/section-divider'
 
@@ -21,7 +20,7 @@ const page = () => {
       <SectionDivider />
       <BlogSection />
       <SectionDivider />
-      <ExperienceTimeline />
+      
       <SectionDivider />
       <CertificationsAwards />
     </main>

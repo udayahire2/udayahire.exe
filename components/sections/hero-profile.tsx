@@ -9,9 +9,9 @@ import { SectionContainer } from "@/components/layout/section-container";
 
 export function HeroProfile() {
     return (
-        <SectionContainer className="py-12 md:py-24 border-none flex flex-col justify-center">
+        <SectionContainer className="px-0 md:px-0 py-12 md:py-24 border-none flex flex-col justify-center">
             <motion.div
-                className="relative z-10 mx-auto w-full max-w-5xl"
+                className="relative z-10 mx-auto w-full max-w-7xl"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.6 }}
@@ -20,24 +20,24 @@ export function HeroProfile() {
                 <div className="relative w-full flex flex-col md:flex-row shadow-sm">
 
                     {/* ── Outer SVG Frame for Bento Box ── */}
-                    <svg className="absolute inset-0 w-full h-full pointer-events-none z-0" viewBox="0 0 1 1" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-                        <line x1="0" y1="0" x2="1" y2="0" className="stroke-border" strokeWidth="1" vectorEffect="non-scaling-stroke" opacity="0.6" />
-                        <line x1="0" y1="1" x2="1" y2="1" className="stroke-border" strokeWidth="1" vectorEffect="non-scaling-stroke" opacity="0.6" />
-                        <line x1="0" y1="0" x2="0" y2="1" className="stroke-border" strokeWidth="1" vectorEffect="non-scaling-stroke" opacity="0.6" />
-                        <line x1="1" y1="0" x2="1" y2="1" className="stroke-border" strokeWidth="1" vectorEffect="non-scaling-stroke" opacity="0.6" />
+                    <svg className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-visible" xmlns="http://www.w3.org/2000/svg">
+                        <line x1="0" y1="0" x2="100%" y2="0" className="stroke-border" strokeWidth="1" opacity="0.6" />
+                        <line x1="0" y1="100%" x2="100%" y2="100%" className="stroke-border" strokeWidth="1" opacity="0.6" />
+                        <line x1="0" y1="0" x2="0" y2="100%" className="stroke-border" strokeWidth="1" opacity="0.6" />
+                        <line x1="100%" y1="0" x2="100%" y2="100%" className="stroke-border" strokeWidth="1" opacity="0.6" />
                     </svg>
 
                     {/* ─── Left Panel: Avatar ─── */}
                     <div className="relative w-full md:w-[38%] py-12 md:py-20 flex items-center justify-center shrink-0 bg-background/50 backdrop-blur-sm">
 
                         {/* ── Vertical Line Separator (Desktop) ── */}
-                        <svg className="absolute top-0 right-0 w-px h-full overflow-visible hidden md:block z-0 pointer-events-none" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-                            <line x1="0" y1="0" x2="0" y2="100%" className="stroke-border" strokeWidth="1" vectorEffect="non-scaling-stroke" opacity="0.6" />
+                        <svg className="absolute top-0 right-0 w-px h-full overflow-visible hidden md:block z-0 pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+                            <line x1="0" y1="0" x2="0" y2="100%" className="stroke-border" strokeWidth="1" opacity="0.6" />
                         </svg>
 
                         {/* ── Horizontal Line Separator (Mobile) ── */}
-                        <svg className="absolute bottom-0 left-0 w-full h-px overflow-visible md:hidden z-0 pointer-events-none" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-                            <line x1="0" y1="0" x2="100%" y2="0" className="stroke-border" strokeWidth="1" vectorEffect="non-scaling-stroke" opacity="0.6" />
+                        <svg className="absolute bottom-0 left-0 w-full h-px overflow-visible md:hidden z-0 pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+                            <line x1="0" y1="0" x2="100%" y2="0" className="stroke-border" strokeWidth="1" opacity="0.6" />
                         </svg>
 
                         <motion.div
@@ -54,13 +54,13 @@ export function HeroProfile() {
                     </div>
 
                     {/* ─── Right Panel: Content Rows ─── */}
-                    <div className="flex flex-col w-full md:w-[100%] bg-background/50 backdrop-blur-sm relative z-0">
+                    <div className="flex flex-col w-full md:flex-1 bg-background/50 backdrop-blur-sm relative z-0">
 
                         {/* Row 1 — Mono tagline */}
                         <div className="relative flex flex-col justify-end px-6 md:px-12 py-6 md:py-10">
                             {/* ── Horizontal Line Separator ── */}
-                            <svg className="absolute bottom-0 left-0 w-full h-px overflow-visible z-0 pointer-events-none" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-                                <line x1="0" y1="0" x2="100%" y2="0" className="stroke-border" strokeWidth="1" vectorEffect="non-scaling-stroke" opacity="0.6" />
+                            <svg className="absolute bottom-0 left-0 w-full h-px overflow-visible z-0 pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+                                <line x1="0" y1="0" x2="100%" y2="0" className="stroke-border" strokeWidth="1" opacity="0.6" />
                             </svg>
 
                             <motion.span
@@ -76,8 +76,8 @@ export function HeroProfile() {
                         {/* Row 2 — Name + Badge + Volume */}
                         <div className="relative flex items-center px-6 md:px-12 py-6 md:py-10 gap-3">
                             {/* ── Horizontal Line Separator ── */}
-                            <svg className="absolute bottom-0 left-0 w-full h-px overflow-visible z-0 pointer-events-none" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-                                <line x1="0" y1="0" x2="100%" y2="0" className="stroke-border" strokeWidth="1" vectorEffect="non-scaling-stroke" opacity="0.6" />
+                            <svg className="absolute bottom-0 left-0 w-full h-px overflow-visible z-0 pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+                                <line x1="0" y1="0" x2="100%" y2="0" className="stroke-border" strokeWidth="1" opacity="0.6" />
                             </svg>
 
                             <motion.h1
