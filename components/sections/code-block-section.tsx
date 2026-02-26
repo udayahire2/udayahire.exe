@@ -97,7 +97,7 @@ export async function GET(req: Request) {
    Component
    ───────────────────────────────────────────── */
 export function CodeBlockSection() {
-    const [activeTab, setActiveTab] = useState(CODE_SNIPPETS[0].id);
+    const [activeTab, setActiveTab] = useState<string>(CODE_SNIPPETS[0].id);
 
     const activeSnippet =
         CODE_SNIPPETS.find((s) => s.id === activeTab) ?? CODE_SNIPPETS[0];

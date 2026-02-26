@@ -122,6 +122,9 @@ export function SearchCommand({ open, setOpen }: SearchCommandProps) {
                                 transition={{ duration: 0.2, ease: "easeOut" }}
                                 className="fixed left-[50%] top-[50%] z-50 w-full max-w-lg -translate-x-[50%] -translate-y-[50%] overflow-hidden rounded-xl border border-border bg-popover text-popover-foreground shadow-2xl outline-none"
                             >
+                                <DialogPrimitive.Title className="sr-only">Search</DialogPrimitive.Title>
+                                <DialogPrimitive.Description className="sr-only">Search commands and navigation</DialogPrimitive.Description>
+
                                 {/* Input Area */}
                                 <div className="flex items-center border-b px-3">
                                     <Search className="mr-2 h-4 w-4 shrink-0 opacity-50" />

@@ -13,7 +13,7 @@ export function PageRails() {
         >
             <div className="relative w-full max-w-7xl h-full">
                 <svg
-                    className="absolute inset-0 w-full h-full"
+                    className="absolute inset-0 w-full h-full overflow-visible"
                     viewBox="0 0 1 1"
                     preserveAspectRatio="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -21,16 +21,14 @@ export function PageRails() {
                     {/* Left rail */}
                     <line
                         x1="0" y1="0" x2="0" y2="1"
-                        stroke="currentColor"
-                        strokeOpacity="0.12"
+                        className="stroke-border"
                         strokeWidth="1"
                         vectorEffect="non-scaling-stroke"
                     />
                     {/* Right rail */}
                     <line
                         x1="1" y1="0" x2="1" y2="1"
-                        stroke="currentColor"
-                        strokeOpacity="0.12"
+                        className="stroke-border"
                         strokeWidth="1"
                         vectorEffect="non-scaling-stroke"
                     />

@@ -18,8 +18,10 @@ export function SectionContainer({
     return (
         <section className={cn("w-full relative flex flex-col items-center", fullWidthClassName)}>
 
-            {/* SVG Frame */}
-            <SectionFrame />
+            {/* SVG Frame perfectly matching max-w-7xl bounds to connect with page rails */}
+            <div className="absolute inset-0 w-full max-w-7xl mx-auto pointer-events-none z-0">
+                <SectionFrame />
+            </div>
 
             <div
                 className={cn(
