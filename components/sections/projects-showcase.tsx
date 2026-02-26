@@ -4,80 +4,59 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { SectionContainer } from "@/components/layout/section-container";
 import { Badge } from "@/components/ui/badge";
-import { ExternalLink, Github, Star, GitFork } from "lucide-react";
+import { ExternalLink, Github } from "lucide-react";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import Link from "next/link";
 
 const projects = [
     {
         id: 1,
-        title: "E-Commerce Dashboard",
-        description: "A comprehensive analytics dashboard for online retailers with real-time data visualization.",
-        tags: ["Next.js", "TypeScript", "Tailwind", "Recharts"],
-        category: "Frontend",
-        github: "https://github.com/uday/dashboard",
-        demo: "https://dashboard-demo.com",
-        stars: 124,
-        forks: 35
+        title: "Gram Panchayat Platform",
+        description: "A structured digital governance platform designed to streamline rural administration operations.",
+        features: [
+            "Centralized resident database management",
+            "Digitized public record access & transparency",
+            "Localized civic services deployments"
+        ],
+        tags: ["PHP", "MySQL", "JavaScript", "HTML", "CSS"],
+        category: "Fullstack",
+        status: "Featured",
+        github: "https://github.com/udayahire2/gram-panchayat",
+        demo: "#"
     },
     {
         id: 2,
-        title: "SaaS Authentication System",
-        description: "Secure, multi-tenant authentication service with role-based access control.",
-        tags: ["Node.js", "PostgreSQL", "Redis", "Docker"],
-        category: "Backend",
-        github: "https://github.com/uday/auth-service",
-        demo: "#",
-        stars: 89,
-        forks: 12
+        title: "UDX UI Kit",
+        description: "A modern, accessible component library providing robust UI elements and standardized design tokens.",
+        features: [
+            "Accessible components built on Radix UI primitives",
+            "Fluid, high-performance animations with Framer Motion",
+            "Customizable, token-driven design system via Tailwind"
+        ],
+        tags: ["React", "TailwindCSS", "Framer Motion", "Radix UI"],
+        category: "Frontend",
+        status: "In Progress",
+        github: "https://github.com/udayahire2/udx-ui-kit",
+        demo: "#"
     },
     {
         id: 3,
-        title: "Portfolio Template",
-        description: "A minimal, high-performance developer portfolio built with Next.js and Framer Motion.",
-        tags: ["React", "Framer Motion", "Tailwind"],
+        title: "NMU Platform Scaffold",
+        description: "A high-performance web application scaffolding emphasizing modern tooling and strict type safety.",
+        features: [
+            "Fast hot-module replacement and builds with Vite",
+            "Strict TypeScript generic types enforcement",
+            "Production-ready, customized ESLint linting configurations"
+        ],
+        tags: ["React", "TypeScript", "Vite", "ESLint"],
         category: "Frontend",
-        github: "https://github.com/uday/portfolio",
-        demo: "https://uday.dev",
-        stars: 256,
-        forks: 48
-    },
-    {
-        id: 4,
-        title: "Task Management API",
-        description: "RESTful API for task management with real-time updates via WebSockets.",
-        tags: ["Express", "MongoDB", "Socket.io"],
-        category: "Backend",
-        github: "https://github.com/uday/task-api",
-        demo: "#",
-        stars: 45,
-        forks: 8
-    },
-    {
-        id: 5,
-        title: "AI Image Generator",
-        description: "Full-stack application using OpenAI DALL-E API to generate and share images.",
-        tags: ["Next.js", "OpenAI", "Prisma", "Stripe"],
-        category: "Fullstack",
-        github: "https://github.com/uday/ai-gen",
-        demo: "https://ai-gen.app",
-        stars: 312,
-        forks: 67
-    },
-    {
-        id: 6,
-        title: "Component Library",
-        description: "A collection of reusable React components built with accessibility in mind.",
-        tags: ["React", "Storybook", "Radix UI"],
-        category: "Frontend",
-        github: "https://github.com/uday/ui-kit",
-        demo: "https://ui-kit.uday.dev",
-        stars: 180,
-        forks: 22
+        status: "In Progress",
+        github: "https://github.com/udayahire2/nmu",
+        demo: "#"
     }
 ];
 
-const categories = ["All", "Frontend", "Backend", "Fullstack"];
+const categories = ["All", "Frontend", "Fullstack"];
 
 export function ProjectsShowcase() {
     const [activeCategory, setActiveCategory] = useState("All");
@@ -105,8 +84,8 @@ export function ProjectsShowcase() {
                                 key={category}
                                 onClick={() => setActiveCategory(category)}
                                 className={`px-3 py-1.5 rounded text-sm font-medium transition-colors relative ${activeCategory === category
-                                        ? "text-foreground"
-                                        : "text-muted-foreground hover:text-foreground"
+                                    ? "text-foreground"
+                                    : "text-muted-foreground hover:text-foreground"
                                     }`}
                             >
                                 {activeCategory === category && (
@@ -136,13 +115,24 @@ export function ProjectsShowcase() {
                             >
                                 <Card className="h-full flex flex-col overflow-hidden group bg-card border-border/60 hover:border-border hover:bg-card/80 transition-colors duration-200">
                                     <CardHeader className="pb-3">
-                                        <div className="flex justify-between items-start gap-2 mb-1">
+                                        <div className="flex justify-between items-start gap-2 mb-2">
                                             <CardTitle className="text-base font-semibold line-clamp-1 text-foreground">{project.title}</CardTitle>
-                                            <Badge variant="secondary" className="text-xs shrink-0">{project.category}</Badge>
+                                            <div className="flex gap-2">
+                                                {project.status && (
+                                                    <Badge variant={project.status === "Featured" ? "default" : "outline"} className="text-xs shrink-0">
+                                                        {project.status}
+                                                    </Badge>
+                                                )}
+                                            </div>
                                         </div>
-                                        <CardDescription className="line-clamp-2 text-sm leading-relaxed">
+                                        <CardDescription className="text-sm leading-relaxed mb-3">
                                             {project.description}
                                         </CardDescription>
+                                        <ul className="text-xs text-muted-foreground list-disc pl-4 space-y-1.5 marker:text-muted-foreground/50">
+                                            {project.features?.map((feature, i) => (
+                                                <li key={i} className="leading-snug">{feature}</li>
+                                            ))}
+                                        </ul>
                                     </CardHeader>
 
                                     <CardContent className="mt-auto pb-3">
@@ -155,34 +145,28 @@ export function ProjectsShowcase() {
                                         </div>
                                     </CardContent>
 
-                                    <CardFooter className="pt-0 text-xs text-muted-foreground flex justify-between border-t border-border/40 px-4 py-3">
-                                        <div className="flex gap-4">
-                                            <span className="flex items-center gap-1">
-                                                <Star className="w-3 h-3" /> {project.stars}
-                                            </span>
-                                            <span className="flex items-center gap-1">
-                                                <GitFork className="w-3 h-3" /> {project.forks}
-                                            </span>
-                                        </div>
+                                    <CardFooter className="pt-0 text-xs text-muted-foreground flex justify-between items-center border-t border-border/40 px-4 py-3">
+                                        <Badge variant="secondary" className="bg-transparent border-0 text-muted-foreground hover:bg-transparent pl-0">{project.category}</Badge>
                                         <div className="flex items-center gap-3">
                                             <a
                                                 href={project.github}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className="flex items-center gap-1 hover:text-foreground transition-colors"
-                                                aria-label="View source"
+                                                className="flex items-center gap-2 hover:text-foreground transition-colors text-xs font-medium bg-muted/50 hover:bg-muted py-1.5 px-3 rounded-md border border-border/50"
+                                                aria-label="View source on GitHub"
                                             >
                                                 <Github className="w-3.5 h-3.5" />
+                                                Source
                                             </a>
                                             {project.demo !== "#" && (
                                                 <a
                                                     href={project.demo}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
-                                                    className="flex items-center gap-1 hover:text-foreground transition-colors"
+                                                    className="flex items-center gap-1 hover:text-foreground transition-colors bg-muted/50 hover:bg-muted py-1.5 px-3 rounded-md border border-border/50"
                                                     aria-label="View demo"
                                                 >
-                                                    <ExternalLink className="w-3.5 h-3.5" />
+                                                    <ExternalLink className="w-3.5 h-3.5" /> Demo
                                                 </a>
                                             )}
                                         </div>

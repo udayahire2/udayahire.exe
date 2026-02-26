@@ -4,7 +4,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import { Github, Linkedin, Twitter, Mail, BadgeCheck, Volume2 } from "lucide-react";
+import { Github, Linkedin, Instagram, Mail, BadgeCheck, Volume2 } from "lucide-react";
 import { SectionContainer } from "@/components/layout/section-container";
 
 export function HeroProfile() {
@@ -121,20 +121,28 @@ export function HeroProfile() {
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.65 }}
                             >
-                                <Button className="rounded-md bg-foreground text-background hover:bg-foreground/90 transition-colors border-0 px-6 h-10 text-sm font-medium shadow-none">
-                                    <Mail className="w-4 h-4 mr-2" />
-                                    Contact Me
+                                <Button asChild className="rounded-md bg-foreground text-background hover:bg-foreground/90 transition-colors border-0 px-6 h-10 text-sm font-medium shadow-none">
+                                    <a href="mailto:auday248@outlook.com">
+                                        <Mail className="w-4 h-4 mr-2" />
+                                        Contact Me
+                                    </a>
                                 </Button>
 
                                 <div className="flex items-center gap-2 ml-1">
-                                    <Button variant="outline" size="icon" className="group rounded-md border-border text-muted-foreground hover:text-foreground hover:bg-muted transition-colors h-10 w-10 bg-transparent shadow-none">
-                                        <Github className="w-4 h-4 transition-transform group-hover:scale-110" />
+                                    <Button asChild variant="outline" size="icon" className="group rounded-md border-border text-muted-foreground hover:text-foreground hover:bg-muted transition-colors h-10 w-10 bg-transparent shadow-none">
+                                        <a href="https://github.com/udayahire2" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                                            <Github className="w-4 h-4 transition-transform group-hover:scale-110" />
+                                        </a>
                                     </Button>
-                                    <Button variant="outline" size="icon" className="group rounded-md border-border text-muted-foreground hover:text-foreground hover:bg-muted transition-colors h-10 w-10 bg-transparent shadow-none">
-                                        <Linkedin className="w-4 h-4 transition-transform group-hover:scale-110" />
+                                    <Button asChild variant="outline" size="icon" className="group rounded-md border-border text-muted-foreground hover:text-foreground hover:bg-muted transition-colors h-10 w-10 bg-transparent shadow-none">
+                                        <a href="https://www.linkedin.com/in/uday-ahire-0855b22b4/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                                            <Linkedin className="w-4 h-4 transition-transform group-hover:scale-110" />
+                                        </a>
                                     </Button>
-                                    <Button variant="outline" size="icon" className="group rounded-md border-border text-muted-foreground hover:text-foreground hover:bg-muted transition-colors h-10 w-10 bg-transparent shadow-none">
-                                        <Twitter className="w-4 h-4 transition-transform group-hover:scale-110" />
+                                    <Button asChild variant="outline" size="icon" className="group rounded-md border-border text-muted-foreground hover:text-foreground hover:bg-muted transition-colors h-10 w-10 bg-transparent shadow-none">
+                                        <a href="https://www.instagram.com/udayahire.exe/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                                            <Instagram className="w-4 h-4 transition-transform group-hover:scale-110" />
+                                        </a>
                                     </Button>
                                 </div>
                             </motion.div>

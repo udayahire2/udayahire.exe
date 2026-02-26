@@ -2,7 +2,7 @@
 
 import React from "react";
 import { SectionContainer } from "@/components/layout/section-container";
-import { Github, Twitter, Linkedin, Mail } from "lucide-react";
+import { Github, Instagram, Linkedin, Mail } from "lucide-react";
 import Link from "next/link";
 
 export function Footer() {
@@ -20,16 +20,16 @@ export function Footer() {
                             Building digital experiences that blend performance with exceptional design. Contact me for freelance opportunities.
                         </p>
                         <div className="flex gap-4">
-                            <a href="https://github.com/uday" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">
+                            <a href="https://github.com/udayahire2" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">
                                 <Github className="w-5 h-5" />
                             </a>
-                            <a href="https://twitter.com/uday" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">
-                                <Twitter className="w-5 h-5" />
+                            <a href="https://www.instagram.com/udayahire.exe/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">
+                                <Instagram className="w-5 h-5" />
                             </a>
-                            <a href="https://linkedin.com/in/uday" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">
+                            <a href="https://www.linkedin.com/in/uday-ahire-0855b22b4/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">
                                 <Linkedin className="w-5 h-5" />
                             </a>
-                            <a href="mailto:hello@uday.dev" className="text-muted-foreground hover:text-foreground transition-colors">
+                            <a href="mailto:auday248@outlook.com" className="text-muted-foreground hover:text-foreground transition-colors">
                                 <Mail className="w-5 h-5" />
                             </a>
                         </div>
