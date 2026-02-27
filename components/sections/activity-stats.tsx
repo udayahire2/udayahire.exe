@@ -90,43 +90,48 @@ export function ActivityStats() {
     const totalContributions = contributionData.reduce((sum, d) => sum + d.count, 0);
 
     return (
-        <SectionContainer id="activity" className="py-24">
+        <SectionContainer id="activity" className="py-24 max-w-5xl mx-auto px-4 md:px-6">
             <div className="flex flex-col gap-12">
-                <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+                <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
                     <div>
-                        <p className="text-xs font-mono text-muted-foreground uppercase tracking-widest mb-3">Activity</p>
-                        <h2 className="text-3xl font-bold tracking-tight mb-1">Coding Activity</h2>
+                        <div className="flex items-center gap-3 mb-4">
+                            <span className="w-8 h-px bg-primary/50"></span>
+                            <span className="font-mono text-xs md:text-sm text-primary uppercase tracking-widest font-medium">
+                                Activity
+                            </span>
+                        </div>
+                        <h2 className="text-3xl font-bold tracking-tight mb-2">Coding Activity</h2>
                         <p className="text-muted-foreground text-sm">My contributions over the last year.</p>
                     </div>
-                    <div className="flex gap-6">
+                    <div className="flex gap-8">
                         <div className="text-right">
-                            <div className="text-2xl font-bold font-mono text-foreground">
+                            <div className="text-2xl font-bold text-foreground">
                                 {totalContributions.toLocaleString()}
                             </div>
-                            <div className="text-xs text-muted-foreground uppercase tracking-wider">Total</div>
+                            <div className="text-xs text-muted-foreground uppercase font-mono tracking-widest mt-1">Total</div>
                         </div>
-                        <div className="w-px bg-border h-10" />
+                        <div className="w-px bg-border h-12" />
                         <div className="text-right">
-                            <div className="text-2xl font-bold font-mono text-foreground">14</div>
-                            <div className="text-xs text-muted-foreground uppercase tracking-wider">Streak</div>
+                            <div className="text-2xl font-bold text-foreground">14</div>
+                            <div className="text-xs text-muted-foreground uppercase font-mono tracking-widest mt-1">Streak</div>
                         </div>
                     </div>
                 </div>
 
-                {/* Contribution Graph */}
+                {/* Contribution Graph - Premium Card variant */}
                 <motion.div
                     initial={{ opacity: 0, y: 15 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5 }}
-                    className="p-6 md:p-8 rounded-lg border border-border/60 bg-muted/5 overflow-hidden shadow-sm"
+                    className="p-6 md:p-8 rounded-2xl border border-border/80 bg-card shadow-sm"
                 >
                     <ContributionGraph
                         data={contributionData}
                         maxLevel={MAX_LEVEL}
                         blockSize={12}
                         blockMargin={4}
-                        blockRadius={2}
+                        blockRadius={3}
                         fontSize={12}
                         className="w-full"
                     >
@@ -147,7 +152,7 @@ export function ActivityStats() {
                                 />
                             )}
                         </ContributionGraphCalendar>
-                        <ContributionGraphFooter className="mt-3 text-xs text-muted-foreground">
+                        <ContributionGraphFooter className="mt-4 text-xs text-muted-foreground">
                             <ContributionGraphTotalCount />
                             <ContributionGraphLegend>
                                 {({ level }) => (
@@ -155,7 +160,7 @@ export function ActivityStats() {
                                         <title>{`Level ${level}`}</title>
                                         <rect
                                             className={cn(
-                                                "stroke-[0.5px] stroke-border/50",
+                                                "stroke-1 stroke-border/30",
                                                 'data-[level="0"]:fill-[#ebedf0] dark:data-[level="0"]:fill-[#161b22]',
                                                 'data-[level="1"]:fill-[#9be9a8] dark:data-[level="1"]:fill-[#0e4429]',
                                                 'data-[level="2"]:fill-[#40c463] dark:data-[level="2"]:fill-[#006d32]',
@@ -164,8 +169,8 @@ export function ActivityStats() {
                                             )}
                                             data-level={level}
                                             height={12}
-                                            rx={2}
-                                            ry={2}
+                                            rx={3}
+                                            ry={3}
                                             width={12}
                                         />
                                     </svg>
@@ -176,14 +181,14 @@ export function ActivityStats() {
                 </motion.div>
 
                 {/* Recent Activity + Stats */}
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 mt-4">
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 pt-4">
                     {/* Activity Feed */}
                     <div className="md:col-span-7 lg:col-span-8 flex flex-col">
-                        <div className="flex items-center gap-3 mb-8 border-b border-border/40 pb-4">
-                            <Activity className="w-4 h-4 text-muted-foreground" />
-                            <h3 className="text-sm font-mono text-foreground tracking-widest uppercase">Recent Activity</h3>
+                        <div className="flex items-center gap-3 mb-8 border-b border-border/50 pb-4">
+                            <Activity className="w-4 h-4 text-primary" />
+                            <h3 className="text-sm font-semibold text-foreground tracking-wide">Recent Activity</h3>
                         </div>
-                        <div className="relative border-l border-border/40 ml-2 space-y-8 pl-8 py-2">
+                        <div className="relative border-l border-border/50 ml-2 space-y-8 pl-8 py-2">
                             {recentActivity.map((item, index) => (
                                 <motion.div
                                     key={item.id}
@@ -193,17 +198,17 @@ export function ActivityStats() {
                                     transition={{ delay: index * 0.08 }}
                                     className="relative group"
                                 >
-                                    <div className="absolute -left-[33px] p-1 rounded-sm border border-border bg-background z-10 text-muted-foreground">
+                                    <div className="absolute -left-[33px] p-1.5 rounded-full border border-border bg-background z-10 text-muted-foreground shadow-sm group-hover:border-primary group-hover:text-primary transition-colors">
                                         <item.icon className="w-3.5 h-3.5" />
                                     </div>
-                                    <div className="flex flex-col gap-1">
+                                    <div className="flex flex-col gap-1.5">
                                         <div className="flex items-center gap-2 text-sm">
-                                            <span className="font-medium text-foreground group-hover:text-foreground/80 transition-colors cursor-pointer">{item.repo}</span>
-                                            <span className="text-muted-foreground/50">·</span>
+                                            <span className="font-semibold text-foreground hover:text-primary transition-colors cursor-pointer">{item.repo}</span>
+                                            <span className="text-muted-foreground/30">•</span>
                                             <span className="text-muted-foreground text-xs">{item.time}</span>
                                         </div>
                                         <p className="text-sm text-muted-foreground">{item.desc}</p>
-                                        <div className="text-xs font-mono text-muted-foreground bg-muted/40 px-2 py-0.5 rounded w-fit mt-0.5">
+                                        <div className="text-xs font-mono text-muted-foreground bg-muted hover:bg-muted/80 px-2 py-1 rounded w-fit mt-1 transition-colors">
                                             {item.ref}
                                         </div>
                                     </div>
@@ -212,31 +217,31 @@ export function ActivityStats() {
                         </div>
                     </div>
 
-                    {/* Stats Cards - Minimal Outlined */}
+                    {/* Stats Cards - Premium Product style */}
                     <div className="md:col-span-5 lg:col-span-4 flex flex-col gap-4">
-                        <div className="flex items-center gap-3 mb-4 md:mb-8 border-b border-border/40 pb-4">
-                            <Star className="w-4 h-4 text-muted-foreground" />
-                            <h3 className="text-sm font-mono text-foreground tracking-widest uppercase">Overview</h3>
+                        <div className="flex items-center gap-3 mb-4 md:mb-8 border-b border-border/50 pb-4">
+                            <Star className="w-4 h-4 text-primary" />
+                            <h3 className="text-sm font-semibold text-foreground tracking-wide">Overview</h3>
                         </div>
 
-                        <div className="p-6 rounded-lg border border-border/60 bg-muted/5 flex flex-col gap-1 shadow-sm transition-colors hover:bg-muted/10">
+                        <div className="p-6 rounded-2xl border border-border/80 bg-card flex flex-col gap-1 shadow-sm hover:shadow-md transition-shadow">
                             <span className="text-xs font-mono text-muted-foreground uppercase tracking-widest">Pull Requests</span>
                             <div className="text-3xl font-bold tracking-tight text-foreground mt-2">142</div>
                             <span className="text-xs text-muted-foreground mt-1">+12% from last month</span>
                         </div>
 
-                        <div className="p-6 rounded-lg border border-border/60 bg-muted/5 flex flex-col gap-1 shadow-sm transition-colors hover:bg-muted/10">
+                        <div className="p-6 rounded-2xl border border-border/80 bg-card flex flex-col gap-1 shadow-sm hover:shadow-md transition-shadow">
                             <span className="text-xs font-mono text-muted-foreground uppercase tracking-widest">Code Reviews</span>
                             <div className="text-3xl font-bold tracking-tight text-foreground mt-2">85</div>
                             <span className="text-xs text-muted-foreground mt-1">+5% from last month</span>
                         </div>
 
-                        <div className="p-6 rounded-lg border border-border/60 bg-primary/5 flex items-center justify-between shadow-sm mt-auto">
+                        <div className="p-6 rounded-2xl border border-border/80 bg-primary/[0.03] hover:bg-primary/[0.05] border-primary/20 flex items-center justify-between shadow-sm mt-auto transition-colors">
                             <div className="flex flex-col">
                                 <span className="text-lg font-bold text-foreground tracking-tight">Top 1%</span>
                                 <span className="text-xs text-muted-foreground font-mono mt-1">Global Contributor</span>
                             </div>
-                            <Star className="w-5 h-5 text-primary/80" />
+                            <Star className="w-5 h-5 text-primary" />
                         </div>
                     </div>
                 </div>

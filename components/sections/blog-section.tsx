@@ -41,10 +41,15 @@ const blogPosts = [
 export function BlogSection() {
     return (
         <SectionContainer id="blog" className="py-24 px-4 md:px-6">
-            <div className="flex flex-col gap-12">
+            <div className="flex flex-col gap-12 w-full max-w-5xl mx-auto">
                 <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-                    <div className="space-y-3">
-                        <p className="text-xs font-mono text-muted-foreground uppercase tracking-widest">Writing</p>
+                    <div className="space-y-4">
+                        <div className="flex items-center gap-3 mb-2">
+                            <span className="w-8 h-px bg-primary/50"></span>
+                            <span className="font-mono text-xs md:text-sm text-primary uppercase tracking-widest font-medium">
+                                03. / Writing
+                            </span>
+                        </div>
                         <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Recent Writings</h2>
                         <p className="text-muted-foreground text-sm max-w-2xl">
                             Thoughts on software engineering, design patterns, and emerging technologies.
@@ -53,10 +58,10 @@ export function BlogSection() {
 
                     <Link
                         href="/blog"
-                        className="hidden md:flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors group"
+                        className="hidden md:flex items-center gap-2 text-sm font-medium text-foreground hover:text-primary transition-colors group px-4 py-2 border border-border/80 rounded-full hover:bg-muted/50"
                     >
                         View all posts
-                        <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </Link>
                 </div>
 
@@ -70,26 +75,26 @@ export function BlogSection() {
                             transition={{ delay: index * 0.08 }}
                         >
                             <Link href={`/blog/${post.slug}`} className="group h-full block">
-                                <Card className="h-full flex flex-col border-border/60 hover:border-border transition-colors bg-card">
+                                <Card className="h-full flex flex-col border-border/80 rounded-2xl overflow-hidden hover:border-border hover:shadow-md transition-all duration-300 bg-card group-hover:-translate-y-1">
                                     {/* Placeholder image area */}
-                                    <div className="relative h-40 bg-muted/40 overflow-hidden border-b border-border/40">
+                                    <div className="relative h-44 bg-muted/40 overflow-hidden border-b border-border/50 group-hover:bg-muted/60 transition-colors duration-300">
                                         <div className="absolute top-4 left-4">
-                                            <Badge variant="secondary" className="text-xs">{post.category}</Badge>
+                                            <Badge variant="secondary" className="text-xs bg-background/90 backdrop-blur-sm border-0 font-medium">{post.category}</Badge>
                                         </div>
                                     </div>
 
-                                    <CardHeader className="flex-1 space-y-2 p-5 pb-3">
-                                        <div className="flex items-center gap-4 text-xs text-muted-foreground">
+                                    <CardHeader className="flex-1 space-y-3 p-6 pb-4">
+                                        <div className="flex items-center gap-4 text-xs text-muted-foreground font-medium">
                                             <div className="flex items-center gap-1.5">
-                                                <Calendar className="w-3 h-3" />
+                                                <Calendar className="w-3.5 h-3.5" />
                                                 {post.date}
                                             </div>
                                             <div className="flex items-center gap-1.5">
-                                                <Clock className="w-3 h-3" />
+                                                <Clock className="w-3.5 h-3.5" />
                                                 {post.readTime}
                                             </div>
                                         </div>
-                                        <CardTitle className="text-base font-semibold line-clamp-2 text-foreground group-hover:text-foreground/80 transition-colors">
+                                        <CardTitle className="text-lg font-semibold tracking-tight line-clamp-2 text-foreground group-hover:text-primary transition-colors">
                                             {post.title}
                                         </CardTitle>
                                         <p className="text-sm text-muted-foreground line-clamp-2 leading-relaxed">
@@ -97,9 +102,9 @@ export function BlogSection() {
                                         </p>
                                     </CardHeader>
 
-                                    <CardFooter className="p-5 pt-0 mt-auto">
-                                        <span className="text-xs font-medium text-muted-foreground flex items-center gap-1 group-hover:text-foreground transition-colors">
-                                            Read Article <ArrowRight className="w-3 h-3" />
+                                    <CardFooter className="p-6 pt-0 mt-auto">
+                                        <span className="text-sm font-medium text-muted-foreground flex items-center gap-1.5 group-hover:text-primary transition-colors">
+                                            Read Article <ArrowRight className="w-4 h-4" />
                                         </span>
                                     </CardFooter>
                                 </Card>
@@ -108,8 +113,8 @@ export function BlogSection() {
                     ))}
                 </div>
 
-                <Link href="/blog" className="md:hidden flex items-center justify-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors">
-                    View all posts <ArrowRight className="w-3.5 h-3.5" />
+                <Link href="/blog" className="md:hidden flex items-center justify-center gap-2 text-sm font-medium text-foreground hover:text-primary transition-colors w-full px-4 py-3 border border-border/80 rounded-full hover:bg-muted/50">
+                    View all posts <ArrowRight className="w-4 h-4" />
                 </Link>
             </div>
         </SectionContainer>

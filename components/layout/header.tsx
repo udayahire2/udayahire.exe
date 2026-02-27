@@ -37,6 +37,13 @@ const ThemeTrigger = () => {
 
     const toggleTheme = () => {
         setTheme(isDark ? "light" : "dark");
+        try {
+            const audio = new Audio("/sounds/light-switch.wav");
+            audio.volume = 0.5;
+            audio.play().catch(e => console.warn("Audio error:", e));
+        } catch (e) {
+            // ignore
+        }
     };
 
     return (

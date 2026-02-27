@@ -3,6 +3,8 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { SectionContainer } from "@/components/layout/section-container";
+
+// ... (Icons remain the same)
 function ReactIcon(props: React.ComponentProps<"svg">) {
     return (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" {...props}>
@@ -115,64 +117,39 @@ const skills = [
 ];
 
 export function AboutSection() {
-    // Shared transition config
-    const transition = { type: "spring" as const, stiffness: 100, damping: 20 };
-
     return (
-        <SectionContainer id="about" className="py-12 md:py-24 border-none flex flex-col justify-center px-0 md:px-0">
+        <SectionContainer id="about" className="py-24 md:py-32 px-4 md:px-6">
             <motion.div
-                className="relative z-10 mx-auto w-full max-w-7xl"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
+                className="relative z-10 w-full max-w-5xl mx-auto"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.6 }}
+                transition={{ duration: 0.5 }}
             >
-                {/* ── Bento Box Container ── */}
-                <div className="relative w-full flex flex-col lg:flex-row shadow-sm">
-                    {/* ── Outer SVG Frame for Bento Box ── */}
-                    <svg className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-visible" xmlns="http://www.w3.org/2000/svg">
-                        <line x1="0" y1="0" x2="100%" y2="0" className="stroke-border" strokeWidth="1" opacity="0.4" />
-                        <line x1="0" y1="100%" x2="100%" y2="100%" className="stroke-border" strokeWidth="1" opacity="0.4" />
-                        <line x1="0" y1="0" x2="0" y2="100%" className="stroke-border" strokeWidth="1" opacity="0.4" />
-                        <line x1="100%" y1="0" x2="100%" y2="100%" className="stroke-border" strokeWidth="1" opacity="0.4" />
-
-                        {/* Corner markers */}
-                        <path d="M -4 0 L 4 0 M 0 -4 L 0 4" className="stroke-muted-foreground/40" strokeWidth="1" />
-                        <path d="M calc(100% - 4px) 0 L calc(100% + 4px) 0 M 100% -4 L 100% 4" className="stroke-muted-foreground/40" strokeWidth="1" />
-                        <path d="M -4 100% L 4 100% M 0 calc(100% - 4px) L 0 calc(100% + 4px)" className="stroke-muted-foreground/40" strokeWidth="1" />
-                        <path d="M calc(100% - 4px) 100% L calc(100% + 4px) 100% M 100% calc(100% - 4px) L 100% calc(100% + 4px)" className="stroke-muted-foreground/40" strokeWidth="1" />
-                    </svg>
+                <div className="flex flex-col lg:flex-row gap-12 lg:gap-20">
 
                     {/* ─── Left Panel: Text Content ─── */}
-                    <div className="relative w-full lg:w-[45%] py-12 md:py-20 px-6 md:px-12 flex flex-col justify-center shrink-0 bg-background/50 backdrop-blur-sm">
-                        {/* ── Vertical Line Separator (Desktop) ── */}
-                        <svg className="absolute top-0 right-0 w-px h-full overflow-visible hidden lg:block z-0 pointer-events-none" xmlns="http://www.w3.org/2000/svg">
-                            <line x1="0" y1="0" x2="0" y2="100%" className="stroke-border" strokeWidth="1" opacity="0.4" />
-                            <path d="M -4 50% L 4 50%" className="stroke-muted-foreground/30" strokeWidth="1" />
-                        </svg>
-
-                        {/* ── Horizontal Line Separator (Mobile) ── */}
-                        <svg className="absolute bottom-0 left-0 w-full h-px overflow-visible lg:hidden z-0 pointer-events-none" xmlns="http://www.w3.org/2000/svg">
-                            <line x1="0" y1="0" x2="100%" y2="0" className="stroke-border" strokeWidth="1" opacity="0.4" />
-                        </svg>
-
+                    <div className="w-full lg:w-[45%] flex flex-col justify-center shrink-0">
                         <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
-                            transition={{ ...transition, delay: 0.1 }}
-                            className="relative z-10 space-y-8"
+                            transition={{ duration: 0.5, delay: 0.1 }}
+                            className="space-y-8"
                         >
                             <div>
-                                <span className="font-mono text-xs md:text-sm text-primary tracking-widest font-medium mb-4 block">
-                                    01. / ABOUT ME
-                                </span>
+                                <div className="flex items-center gap-3 mb-4">
+                                    <span className="w-8 h-px bg-primary/50"></span>
+                                    <span className="font-mono text-xs md:text-sm text-primary uppercase tracking-widest font-medium">
+                                        01. / About
+                                    </span>
+                                </div>
                                 <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-foreground leading-[1.1]">
                                     Engineering with <br className="hidden md:block" /> Form & Function.
                                 </h2>
                             </div>
 
-                            <div className="space-y-6 text-muted-foreground leading-relaxed text-sm md:text-base max-w-md">
+                            <div className="space-y-6 text-muted-foreground leading-relaxed text-sm md:text-base">
                                 <p>
                                     I am a Design Engineer who bridges the gap between meticulous UI/UX design and robust systems. I build applications that not only look exceptional but perform flawlessly.
                                 </p>
@@ -184,58 +161,25 @@ export function AboutSection() {
                     </div>
 
                     {/* ─── Right Panel: Skills Grid ─── */}
-                    <div className="flex flex-col w-full lg:flex-1 bg-background/50 backdrop-blur-sm relative z-0">
-                        {/* Row 1 — Title */}
-                        <div className="relative flex items-center px-6 md:px-12 py-6 md:py-10">
-                            {/* ── Horizontal Line Separator ── */}
-                            <svg className="absolute bottom-0 left-0 w-full h-px overflow-visible z-0 pointer-events-none" xmlns="http://www.w3.org/2000/svg">
-                                <line x1="0" y1="0" x2="100%" y2="0" className="stroke-border" strokeWidth="1" opacity="0.4" />
-                            </svg>
-
-                            <motion.h3
-                                className="font-mono text-xs md:text-sm text-muted-foreground tracking-widest relative z-10 uppercase"
-                                initial={{ opacity: 0, x: -12 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: 0.3 }}
-                            >
-                                Core Technologies
-                            </motion.h3>
-                        </div>
-
-                        {/* Row 2 — Tech Stack Cards */}
-                        <div className="relative flex-1 p-6 md:p-12">
-                            <motion.div
-                                className="relative z-10 grid grid-cols-2 sm:grid-cols-3 gap-3 md:gap-4"
-                                initial="hidden"
-                                whileInView="visible"
-                                viewport={{ once: true }}
-                                variants={{
-                                    visible: {
-                                        transition: { staggerChildren: 0.05, delayChildren: 0.2 }
-                                    }
-                                }}
-                            >
-                                {skills.map((skill, index) => (
-                                    <motion.div
-                                        key={index}
-                                        variants={{
-                                            hidden: { opacity: 0, y: 10, scale: 0.95 },
-                                            visible: { opacity: 1, y: 0, scale: 1 }
-                                        }}
-                                        transition={transition}
-                                        whileHover={{ scale: 1.05, y: -2 }}
-                                        className="group relative flex flex-col items-center justify-center gap-3 p-6 rounded-xl border border-border/50 bg-muted/20 hover:bg-muted/50 hover:border-primary/30 transition-all duration-300 cursor-default"
-                                    >
-                                        <div className="text-muted-foreground group-hover:text-primary transition-colors duration-300">
-                                            <skill.icon className="w-8 h-8" />
-                                        </div>
-                                        <span className="text-xs font-medium text-muted-foreground group-hover:text-foreground transition-colors duration-300">
-                                            {skill.name}
-                                        </span>
-                                    </motion.div>
-                                ))}
-                            </motion.div>
+                    <div className="w-full lg:flex-1 relative">
+                        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 md:gap-4 relative z-10">
+                            {skills.map((skill, index) => (
+                                <motion.div
+                                    key={index}
+                                    initial={{ opacity: 0, y: 15 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.4, delay: 0.2 + index * 0.05 }}
+                                    className="group flex flex-col items-center justify-center gap-3 p-5 rounded-2xl border border-border/60 bg-card hover:bg-muted/30 transition-all duration-300 cursor-default shadow-sm hover:shadow-md"
+                                >
+                                    <div className="text-muted-foreground group-hover:text-primary transition-colors duration-300">
+                                        <skill.icon className="w-7 h-7" />
+                                    </div>
+                                    <span className="text-xs font-medium text-foreground/80 group-hover:text-foreground transition-colors duration-300">
+                                        {skill.name}
+                                    </span>
+                                </motion.div>
+                            ))}
                         </div>
                     </div>
                 </div>
